@@ -12,8 +12,10 @@ int main()
 	{
 		select = "";
 		cout << "<Sample Statistics>  <Confidence Interval>  <Null Hypothesis>  <Exit>" << endl << "(type desired)" << endl;
-		getline(cin, select);
-		getline(cin, select);
+		while(select=="")
+		{
+			getline(cin,select);
+		}
 		if(select == "")
 		{
 			goto l1;

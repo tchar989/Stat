@@ -129,7 +129,7 @@ void Stat::computeConfidenceInterval()
 	}
 }
 
-double Stat::phi(double x)
+double Stat::Norm_Cumul_Prob_Density_Funct(double x)
 {
     // constants
     double a1 =  0.254829592;
@@ -163,7 +163,7 @@ void Stat::nullHypothesis()
 	cin >> relType;
 	double z;
 	z = (mean-hypMean)/(getStandardDeviation()/sqrt(sampleSize));
-	z = phi(z);
+	z = Norm_Cumul_Prob_Density_Funct(z);
 	if(relType == ">" || relType == ">=")
 	{
 		relnum = 1;
@@ -214,7 +214,7 @@ void Stat::nullHypothesis()
 	}
 	if(relnum == 2 || relnum == 4)
 	{
-		z = 1.0-z;
+		z = 2*(1.0-z);
 	}
 	cout << "Null Hypothesis has a non-ignorable chance of occuring with P-value of " << z << endl;		
 }

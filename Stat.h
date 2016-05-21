@@ -22,5 +22,5 @@ public:
 	double RationalApproximation(double t);
 	double NormalCDFInverse(double p);
 	void nullHypothesis();
-	double phi(double x);
+	double Norm_Cumul_Prob_Density_Funct(double x);
 };
