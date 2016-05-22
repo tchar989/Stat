@@ -47,3 +47,4 @@ Student table implementation for small sample sizes.
 Joint probability mass function reading/analyzing function.
 
 Pattern recognition, prediction algorithms.
+
