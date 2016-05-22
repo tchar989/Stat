@@ -4,9 +4,11 @@
 #include "Stat.h"
 using namespace std;
 
+
 void Stat::takeSample()
 	
 {
+
 	cout << "Input your sample size: " << endl;
 	cin >> sampleSize;
 	cout << "Input your sample elements: " << endl;
@@ -60,10 +62,10 @@ int Stat::getSampleSize()
 
 void Stat::printSampleStats()
 {
-	cout << "Mean: " << mean << endl;
-	cout << "Standard Variance: " << standardVariance << endl;
-	cout << "Standard Deviation: " << getStandardDeviation() << endl;
-	cout << "Size: " << sampleSize << endl;
+	cout << "\u03BC: " << mean << endl;
+ 	cout << "\u03C3^2: " << standardVariance << endl;
+	cout << "\u03C3: " << getStandardDeviation() << endl;
+	cout << "n: " << sampleSize << endl << endl;
 }
 
 double Stat::RationalApproximation(double t)
@@ -127,6 +129,8 @@ void Stat::computeConfidenceInterval()
 		double alpha = percentage/100.0;
 		cout << (mean - NormalCDFInverse(alpha)*(double)deviation) << endl;
 	}
+	cout << endl;
+	cin.get();
 }
 
 double Stat::Norm_Cumul_Prob_Density_Funct(double x)
@@ -157,64 +161,86 @@ void Stat::nullHypothesis()
 	double hypMean;
 	string relType;
 	short relnum;
+	string altOp;
 	cout << "Input your hypothetical mean: " << endl;
 	cin >> hypMean;
 	cout << "Input relational operator for null hypothesis (>,>=,<,<=,=,!=)" << endl;
+	cout << "H0: \u03BC    " << hypMean << string(4,'\b');
 	cin >> relType;
-	double z;
-	z = (mean-hypMean)/(getStandardDeviation()/sqrt(sampleSize));
-	z = Norm_Cumul_Prob_Density_Funct(z);
-	if(relType == ">" || relType == ">=")
+	if(relType == "!=")
+	{
+		altOp = "=";
+		cout << "H1: \u03BC " << altOp << " " << hypMean << endl;
+		relnum = 2;
+		goto l1;
+	}
+	else if(relType == ">=")
+	{
+		altOp = "<";
+		cout << "H1: \u03BC " << altOp << " " << hypMean << endl;
+		relnum = 1;
+		goto l1;
+	}
+	else if(relType == "<=")
+	{
+		altOp = ">";
+		cout << "H1: \u03BC " << altOp << " " << hypMean << endl;
+		relnum = 1;
+		goto l1;
+	}
+	cout << "Enter relational operator for alternate hypothesis (<,<=,>,>=,!=,=)" << endl;
+	cout << "H1: \u03BC    " << hypMean << string(4, '\b');
+	cin >> altOp;
+	if(altOp == ">" || altOp == ">=")
 	{
 		relnum = 1;
 	}
-	else if (relType == "<" || relType == "<=")
+	else if (altOp == "<" || altOp == "<=")
 	{
 		relnum = 2;
 	}
-	else if (relType == "=")
+	else if (altOp == "=")
+		relnum = 2;
+	else if (altOp == "!=")
 		relnum = 3;
-	else if (relType == "!=")
-		relnum = 4;
 	else
 	{
 		cerr << "invalid relational operator" << endl;
 		exit(1);
 	}
-	switch(relnum)
+	l1:
+	double z;
+	z = (mean-hypMean)/(getStandardDeviation()/sqrt(sampleSize));
+	z = Norm_Cumul_Prob_Density_Funct(z);
+	if(relnum == 1)
 	{
-		case 1:
-			if(z <= 0.05)
-			{
-				cout << "Null Hypothesis Rejected. P has value of " << z << endl;
-				return;
-			}
-			break;
-		case 2:
-			if(z >= .995)
-			{
-				cout << "Null Hypothesis Rejected. P has value of " << (1.0-z) << endl;
-				return;
-			}
-			break;
-		case 3:
-			if(z <= 0.05)
-			{
-				cout << "Null Hypothesis Rejected. P has value of " << z << endl;
-				return;
-			}
-			break;
-		case 4:
-			if(z >= 0.995)
-			{
-				cout << "Null Hypothesis Rejected. P has value of " << (1.0-z) << endl;
-				return;
-			}
-			break;
+		z = 1-z;
+		if(z <= 0.05)
+		{
+			cout << "Null Hypothesis Rejected with P value of " << z << endl << endl;
+			cin.get();
+			return;
+		}
 	}
-	if(relnum == 2 || relnum == 4)
+	else if (relnum == 2)
 	{
-		z = 2*(1.0-z);
+		if(z <= 0.05)
+		{
+			cout << "Null Hypothesis Rejected with P value of " << z << endl << endl;
+			cin.get();
+			return;
+		}
 	}
-	cout << "Null Hypothesis has a non-ignorable chance of occuring with P-value of " << z << endl;		
+	else 
+	{
+		z=(1-z)*2;
+		if(z <= 0.05)
+		{
+			cout << "Null Hypothesis Rejected with P Value of " << z << endl << endl;
+			cin.get();
+			return;
+		}
+	}
+	cout << "Null Hypothesis has a non-ignorable chance of occuring with P-value of " << z << endl << endl;	
+	cin.get();	
 }
