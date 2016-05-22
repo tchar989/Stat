@@ -1,9 +1,9 @@
-███████╗████████╗ █████╗ ████████╗
-██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝
-███████╗   ██║   ███████║   ██║   
-╚════██║   ██║   ██╔══██║   ██║   
-███████║   ██║   ██║  ██║   ██║   
-╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   
+    ███████╗████████╗ █████╗ ████████╗
+    ██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝
+    ███████╗   ██║   ███████║   ██║   
+    ╚════██║   ██║   ██╔══██║   ██║   
+    ███████║   ██║   ██║  ██║   ██║   
+    ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   
                                   
 Performs different statistical analyses depending on input sample, including sample mean, sample variance, sample deviation, construction of confidence intervals, and testing of null hypotheses.
 
