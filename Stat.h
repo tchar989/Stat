@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+//g
 using namespace std;
 
 class Stat
