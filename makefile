@@ -7,4 +7,5 @@ STAT_DRIVER.o: STAT_DRIVER.cc
 Stat.o: Stat.cc Stat.h
 	g++ $(OPTS) Stat.cc
 clean:
-	rm -f *o *~
+	rm -f *o
+	rm -f *~
