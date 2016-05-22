@@ -8,6 +8,7 @@
 Performs different statistical analyses depending on input sample, including sample mean, sample variance, sample deviation, construction of confidence intervals, and testing of null hypotheses.
 
 Current Functions:
+
 1) Statistical analysis including sample mean, variance, deviation, and size.
 
 2) Construct confidence interval based on given population deviation (if unknown, program will estimate) and the desired confidence level. Currently no student table implementation.
