@@ -165,7 +165,7 @@ void Stat::nullHypothesis()
 	cout << "Input your hypothetical mean: " << endl;
 	cin >> hypMean;
 	cout << "Input relational operator for null hypothesis (>,>=,<,<=,=,!=)" << endl;
-	cout << "H0: \u03BC    " << hypMean << string(4,'\b');
+	cout << "H0: \u03BC     " << hypMean << string(5,'\b');
 	cin >> relType;
 	if(relType == "!=")
 	{
@@ -189,7 +189,7 @@ void Stat::nullHypothesis()
 		goto l1;
 	}
 	cout << "Enter relational operator for alternate hypothesis (<,<=,>,>=,!=,=)" << endl;
-	cout << "H1: \u03BC    " << hypMean << string(4, '\b');
+	cout << "H1: \u03BC     " << hypMean << string(5, '\b');
 	cin >> altOp;
 	if(altOp == ">" || altOp == ">=")
 	{
