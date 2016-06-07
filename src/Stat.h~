@@ -22,9 +22,9 @@ public:
 	double RationalApproximation(double t);
 	double NormalCDFInverse(double p);
 	double NormalProb(double p);
-	double ExponProb(double p, double n);
-	double BinomialProb(double p, double n);
-	double BernoulliProb(int p);
+	double ExponProb(double p);
+	double BinomialProb(double p);
+	double 
 	void nullHypothesis();
 	double Norm_Cumul_Prob_Density_Funct(double x);
 };

@@ -30,6 +30,12 @@ Enjoy :].
 
 Future updates/addons:
 
+more organization using OOP i.e. distribution class
+
+Ask whether the user wants to provide the actual sample or the sample statistics
+
+Provide applications for distributions i.e. Binomials, Normal, Bernoulli, etc...
+
 Ability to automatically select function if it is the only name that matches what you have typed so far. I.E. Just typing the letter 'S' will automatically launch the Statistical Analysis function.
 
 Exception catching/throwing.
