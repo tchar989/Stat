@@ -244,3 +244,71 @@ void Stat::nullHypothesis()
 	cout << "Null Hypothesis has a non-ignorable chance of occuring with P-value of " << z << endl << endl;	
 	cin.get();	
 }
+
+double Stat::NormalProb()
+{
+  char t;
+  double ourMean;
+  string temp;
+  double ourStdev;
+  double zscore;
+  double prob;
+  char* probab;
+  char relop;
+  char* numb;
+  cout << "If you would like to use a mean other than given sample/statistical mean, type it now. If not, type <ENTER>" << endl;
+  cin >> temp;
+  if(temp == "")
+      ourMean = mean;
+  else
+    ourMean = temp;
+ stswitch:
+  cout << "If you would like to: " << endl << "A: Input population standard deviation" endl << "B: Input new sample standard deviation" << endl << "C: Use given sample/statistical standard deviation" << endl <<
+    "hit corresponding character" << endl;
+  switch(t)
+    {
+    case 'A'
+      cin >> ourStdev;
+      break;
+    case 'B'
+      cin >> ourStdev;
+      ourStdev /= sampleSize;
+      break;
+    case 'C'
+      ourStdev = getStandardDeviation();
+      break;
+    default:
+      cerr << "Incorrect input, try again" << endl;
+      goto stswitch;
+    }
+  cout << "Enter your probability statement (i.e. X >= 3)" << endl;
+  cin >> temp;
+  probab = c_str(temp);
+  int i = 0;
+  int j = 0;
+  while(x[i] != '\0')
+    {
+      if(x[i] == '<')
+	{
+	  //<
+	  relop == '<';
+	}
+      if(x[i] == '=')
+	{
+	  //=
+	  relop == '=';
+	}
+      if((int)x[i] == 62)
+	{
+	  relop == '>';
+	  //>
+	}
+      while(x[i].isdigit() && x[i] != '\0')
+	{
+	  numb[j] = x[i];
+	  j++;
+	  i++;
+	}
+      i++;
+    }
+  
